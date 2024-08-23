@@ -1,0 +1,68 @@
+<!--index.wxml-->
+
+ <!--UI,由纸飞机和文字组成-->
+  <image class="plane-image1" src="/images/plane1.png" style="width: {{planeWidth}}px; height: {{planeHeight}}px; top: {{planeTop}}px; left:{{planeLeft}}px;" />
+  <image class="plane-image2"  wx:if="{{showPlane}}" src="/images/plane2.png"/>
+  <view class="inputField-title" style=" top: {{titleTop}}px; font-size: {{fontSize}}px;" >您想去哪?</view>
+ <view class="searchConatiner" style="top:{{inputTop}}px;">
+   <!--输入框和随机骰子按钮  -->
+   <view class="input-container">
+      <input class="input-element"   placeholder="{{cityname}}" value="{{inputName}}" bindfocus="startInput" bindinput="makingInput" bindblur="loseFocus"bindconfirm="finishedInput" /> 
+      <!-- 随机骰子按钮 -->
+      <image class ="dice"src ="/images/dice.png" bindtap="onButtonClickForRandom"/>
+  </view>
+    <!-- 装填搜索结果  style="height: {{relationHeight}}rpx;" -->
+   <scroll-view wx:if="{{searching}}" 
+   class="searchInfo" 
+   scroll-y="{{highestYet}}" 
+   style="height: {{relationHeight}}rpx;" 
+   >
+     <view 
+     class="info" 
+     wx:for="{{searchCollect}}" 
+     wx:key="index"
+     bind:tap="choosen"
+     data-text="{{item.cityName}}" 
+     >
+      {{item.cityName}}
+     </view>
+   </scroll-view>
+ </view>
+ 
+
+
+
+
+<!-- 滚动内容部分 -->
+  <scroll-view class="content {{animationClass1}}" scroll-y="true" scroll-top="{{scrollTop1}}" bindscroll="scrolling" style="top: {{contentTop}}px; height: {{contentHeight}}px;" wx:if="{{notSelected}}">
+    <block wx:for="{{categoriesArry}}" wx:key="id">
+      <view class="category">{{item.tagName}}</view>
+      <scroll-view scroll-x="true"  scroll-left="{{scrollLeft1}}"class="cities">
+        <block wx:for="{{item.cities}}" wx:key="id">
+          <view class="city">
+           <image class ="cityImage" src="{{item.cover_img_url}}" mode="widthFix"></image>
+            <view class="citytext">{{item.cityName}}</view>
+          </view>   
+        </block>
+      </scroll-view>
+    </block>
+  </scroll-view>
+
+
+<!-- 选完之后的快捷路书 -->
+<view wx:if="{{allSelected}}" class ="selectedContainer {{animationClass2}}" >
+    <image class ="selectedCityImage" src="" mode="widthFix"></image>
+    <view class="selectedCitytext">{{selectedCity}} - {{selectedTag}}</view>
+    <view class="describe">城市概览</view>
+  </view>
+   
+
+
+<!-- 搜索按钮 -->
+<view class="button-container" wx:if="{{showArrow}}">
+    <view class="circle-button" bindtap="onButtonClickForSearch">
+      <image class="arrow-icon-left" src="/images/arrow.png" />
+    </view>
+  </view>
+  <!-- 底部文字 -->
+  <view class ="mention" wx:if="{{showText}}">向上滑动查看更多</view>

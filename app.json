@@ -1,0 +1,67 @@
+
+
+{
+  
+  "pages": [
+    "pages/entre/entre",
+    "pages/loading/loading",
+    "pages/createdPlan/createdPlan",
+    "pages/makePlan2/makePlan2",
+    "pages/validate/validate",
+    "pages/makePlan1/makePlan1",
+    "pages/collection/collection",
+    "pages/message/message",
+    "pages/personalCenter/personalCenter",
+    "pages/calculator/calculator",
+    
+    "pages/sight/sight"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "navigationBarTitleText": "生态旅游",
+    "navigationBarBackgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "custom": true,
+    "backgroundColor": "#ffffff",
+    "color": "#000000",
+    "selectedColor": " #31CEFF",
+    "list": [
+      {
+        "pagePath": "pages/entre/entre",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/collection/collection",
+        "text": "收藏"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/personalCenter/personalCenter",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "usingComponents": {
+    "custom-tab-bar": "custom-tab-bar/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+
+  "plugins": {
+    "citySelector": {
+         "version": "1.0.2",
+         "provider": "wx63ffb7b7894e99ae"
+     }
+  },
+  
+  "permission": {
+    "scope.userFuzzyLocation": {
+      "desc": "您的位置信息将用于小程序定位"
+      }
+  }
+}

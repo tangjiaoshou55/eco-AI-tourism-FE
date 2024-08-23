@@ -1,0 +1,204 @@
+<!--pages/createdPlan/createdPlan.wxml-->
+
+<scroll-view class="allPages" scroll-y="true" bindscroll="scrolling">
+ <view class="backgroundContainer">
+  <swiper class="backgroundPictures"  autoplay="true" interval="3000" circular="true">
+    <swiper-item>
+      <image class="backgroundPicture1" src=""></image>
+    </swiper-item>
+    <swiper-item>
+      <image class="backgroundPicture2" src=""></image>
+    </swiper-item>
+    <swiper-item>
+      <image class="backgroundPicture3" src=""></image>
+    </swiper-item>
+    <!-- 可以继续添加更多的图片 -->
+  </swiper>
+  <view class="textPart">
+    <view class="choosenCity">{{choosenCity}}</view>
+    <view class="choosenDays">{{choosenDays}}</view>
+  </view>
+</view>
+<!-- 下方全部信息 -->
+<view class="information " style="border-radius: {{infoBorder}}rpx;">
+<view class="tourSetting {{animationClass}}" wx:if="{{showInfo}}">
+  <view class="bottomLine1"></view>
+  <!-- 左侧计量显示 -->
+  <view class="peopleContainer">
+    <image class="picture" src="/images/people.png" />
+    <text class="text">{{peopleNumber}}</text>
+  </view>
+  <view class="daysContainer">
+    <image class="picture" src="/images/date.png" />
+    <text class="text">{{daysNumber}}</text>
+  </view>
+  <!-- 竖向分割线 -->
+  <view class="dividLine"></view>
+  <!-- 右侧cost部分显示 -->
+  <view class="costContainer">
+    <view class="c-title">
+      <image class="picture" src="/images/wallet.png" />
+      <text class="text">预估预算</text>
+    </view>
+    <text class="c-text">{{costCalculate}}</text>
+  </view>
+  <!-- 计算器部分显示 -->
+  <navigator url="/pages/calculator/calculator" open-type="navigate">
+    <view class="calculater" bindtap="makeCalculate">
+      <image class="c-picture" src="/images/calculater.png"/>
+    </view>
+  </navigator>
+  <!-- 底部分割线 -->
+  <view class="bottomLine2"></view>
+</view>
+  <!-- 用于查看天数的部分 -->
+  <scroll-view class="eachDay" scroll-x="{{eachDays.length > 5}}" style="position: {{dayPosition}}; top: {{dayTop}}rpx;">
+   <view wx:for="{{eachDays}}" wx:key="index" data-index="{{index}}" class="selectedDay {{item.selected ? 'active' : ''}}" bindtap="choosen" style="width:{{dayWidth}};">
+   第{{item.days}}天
+   </view>
+  </scroll-view>
+
+<!-- 游玩建议部分 -->
+<view class="adviseContainer" style="top:{{adviseHeight}}rpx">
+<!-- 游玩建议 -->
+<view class="timeAdvise">
+   游玩建议时长 ： {{tourTime}}小时
+</view>
+<view class="pathAdvise">
+  路线概览
+</view>
+<view class="adviseText">
+ {{adviseText}}
+</view>
+</view>
+
+ <!-- 具体景点信息和过渡信息-->
+ <scroll-view class="sightContent" scroll-y="true" style="height:{{scrollHeight}}">
+   <block wx:for="{{selectedDate.sights}}" 
+   wx:key="index" 
+   >
+   <view class="messageContainer" 
+   animation ="{{item.animationData}}"
+   wx:if="{{!item.delete}}"
+   >
+     <!-- 过度文本部分 -->
+    <!-- 可滑动部分（景区在内） -->
+    <movable-area class="movable-area">
+        <!-- 删除按钮 -->
+        <button class="delete" bindtap="deleted" data-index="{{index}}" style="width:100%;">
+          <image src="/images/delete.png" class="r-image" mode=""/>
+        <text class="r-text">删除</text>
+        </button>
+        <!-- 更换按钮 -->
+        <movable-view class="replaceContainer" direction="horizontal"  inertia="false" data-index="{{index}}" x="{{item.replacedX}}" disabled="true" damping ="100" >
+          <button class="replace"
+           bindtap="replace" 
+           style="width:100%;" 
+           data-index="{{index}}"
+          
+          >
+        <image src="/images/recycle.png" class="r-image" mode=""/>
+        <text class="r-text">更换</text>
+        </button>
+        </movable-view>
+        
+      <!-- 景区部分 -->
+      <movable-view 
+      direction="horizontal" 
+      class="sight" 
+      bindchange="onChange" 
+      bind:touchstart="onTouchStart"
+       bindtouchend="onTouchEnd" 
+       bind:tap="onInfo"
+       data-index="{{index}}" 
+       x="{{item.x}}"
+       damping ="100"
+      >
+     
+      <!-- 景区图片 -->
+        <image class="s-picture" src="{{item.coverImUrl}}" />
+        <!-- 景区标题 -->
+        <view class="s-title">
+        <!-- 标题名 -->
+          <view class="s-name">
+          {{item.name}}
+          </view>
+          <!-- 标题描述 -->
+          <view class="s-describe">
+          {{item.rankTag}}
+          </view>
+        </view>
+        <!-- 景区评分 -->
+        <view class="s-score">
+        <!-- 景区评分图片-->
+         <image class="star" src="/images/star.png" wx:for="{{item.level}}" />
+         <view class="score-text">
+          {{item.score}}
+          </view>
+        </view>
+        <!-- 开放时间 -->
+        <view class="openTime">
+          {{item.openTime}}-{{item.closeTime}}
+        </view>
+        <!-- 价格 -->
+        <view class="price">
+         ￥{{item.price}}/人
+        </view>
+        <!-- 地址 -->
+        <view class="address">
+        {{item.address}}
+        </view>
+      </movable-view>
+    </movable-area>
+    <view class="intr" wx:if="{{index<selectedDate.sights.length-1}}"
+      >
+        {{item.intr}}
+      </view>
+   </view>
+    <!-- 用于加载中的情况 -->
+    <view class="replaceingContainer {{animationReplace}}" 
+    wx:if="{{item.showReplace}}"
+    data-index="{{index}}"
+    >
+      <image class="recyle" src="/images/recycle-b.png" />
+      <view class="replace-text">正在为您变更此条行程...</view>
+    </view>
+    
+     </block>
+     <view class="tourEnd">-今日行程已结束- </view>
+ </scroll-view>
+ <button class="collect" bind:tap="collect" style="width: 208rpx; height: 60rpx;">收藏攻略</button>
+ <button class="create" bind:tap="create" style="width: 210rpx; height: 60rpx;">重新生成</button>
+</view>
+
+
+</scroll-view>
+<!-- 覆盖层 -->
+<view class="mask" wx:if="{{showMask}}">
+<!-- 重新生成提示框 -->
+  <view class="mention" wx:if="{{showMention}}">
+  <!-- 重新生成之前的提示 -->
+   <view class="m-text"> 重新生成将覆盖当前路书，如需保存请先收藏 </view>
+   <!-- 按钮内容 -->
+   <view class="buttonContainer">
+    <button class="recollect" bind:tap="collect"  >收藏路书</button>
+    <button class="recollect" bind:tap="reason">重新生成</button>
+   </view>
+  </view>
+  <view class="reasonConatiner" wx:if="{{showReason}}">
+   <button class="reasons"
+    wx:for="{{reCreateReasons}}" 
+    wx:key="{{index}}"
+    data-index="{{index}}" 
+    style="width: 400rpx;"
+    bind:tap="setReason"> {{item}} </button>
+  </view>
+
+</view>
+<view class="toast.fade-out2" wx:if="{{showToast}}">
+    删除成功
+  </view>
+
+  <view class="toast.fade-out2"  wx:if="{{showCollect}}">
+    已收藏
+  </view>

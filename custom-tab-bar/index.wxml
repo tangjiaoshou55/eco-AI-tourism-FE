@@ -1,0 +1,7 @@
+<view class="selfbar">
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="tab-bar-item {{selected === index ? 'selected' : ''}}" bindtap="switchTab" data-path="{{item.pagePath}}" data-index="{{index}}">
+      <text>{{item.text}}</text>
+    </view>
+  </block>
+</view>

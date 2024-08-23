@@ -1,0 +1,211 @@
+/* pages/collection/collection.wxss */
+
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding:20rpx;
+  box-sizing: border-box;
+}
+
+.info {
+  display: flex;
+  padding: 20rpx 16rpx;
+  border-radius: 10rpx;
+  color: #9CE0FB;
+  flex-direction: row;
+}
+
+.infoHead {
+    width: 80rpx;
+    height: 80rpx;
+    object-fit: cover;
+}
+
+.infoName {
+  margin-top: auto;
+  font-size: 40rpx;
+}
+
+.fixed-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.divider {
+  height: 1rpx;
+  background-color: #9CE0FB;
+  margin-bottom: 10rpx;
+}
+
+.pageName {
+  padding: 20rpx 16rpx;
+  border-radius: 10rpx;
+  color: black;
+  font-size: 50rpx;
+  text-align: center;
+}
+
+.tabChanger {
+  width: 100%;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.tab {
+  font-size: 40rpx;
+  color: #9CE0FB;
+  position: relative;
+  padding-bottom: 5rpx;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 200%;
+  height: 5rpx;
+  background-color: #9CE0FB;
+  transform: translateX(-25%);
+}
+
+.content {
+  padding-top: 20rpx;
+}
+
+.scroll-content {
+  flex: 1;
+  height: calc(100vh - 300rpx);
+}
+
+.planCard {
+  width: 670rpx;
+  height: 155rpx;
+  margin-left: 0;
+  margin-bottom: 10rpx;
+  display: flex;
+  border-radius: 20rpx;
+  border: 2px solid #9CE0FB;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  background-color: white;
+  transition: all 0.1s;
+  
+  padding: 10rpx;
+  align-items: center;
+}
+
+.planImage {
+  width: 150rpx;
+  height: 150rpx;
+  background-color: #dcdddc;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.planInfo {
+  display:flex;
+  flex-direction: column;
+  padding-bottom: 15rpx;
+}
+
+.planTitle {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 5rpx;
+  margin-top: 5rpx;
+  text-align:left;
+}
+
+.tag {
+  margin-right: 110rpx;
+  text-align: center;
+  background-color: #9CE0FB;
+  border-radius: 9rpx;
+  opacity: 80%;
+  font-size: 23rpx;
+  margin-bottom: 20rpx;
+}
+
+.planDetail {
+  font-size: 23rpx;
+  text-align:left;
+  opacity: 50%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.calculator {
+  width: 38rpx;
+  height: 38rpx;
+  border-radius: 6rpx;
+  filter: invert(50%);
+  margin-right: 10rpx;
+}
+
+.movable-area {
+  width: 480rpx;                  /* 1. 设置宽度为100% */
+  height: 200rpx;               /* 2. 设置高度 */
+  position: relative;         /* 3. 相对定位，确保子元素可以绝对定位 */
+}
+
+.delete {
+  z-index: 0;
+  position: relative;
+  top: px;
+  left: 190rpx;
+  height: 175rpx;
+  background: #FC3838;
+  border-radius: 0rpx 30rpx 30rpx 0rpx;
+  transition: all 0.3s;
+}
+
+.r-image
+{
+  position: absolute;
+  width: 44rpx;
+  height: 47rpx;
+  top: 50rpx;
+  right: 25rpx;
+}
+
+.r-text
+{
+  position: absolute;
+  top: 120rpx;
+  right: 25rpx;
+  color: white;
+  display: flex;
+  height: 15px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.52px;
+  text-align: center;
+}
+
+/* 删除后的弹窗 */
+.toast {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 30rpx 90rpx;
+  border-radius: 10rpx;
+  font-size: 40rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  z-index: 1000;  /* 确保提示框在最上层 */
+}

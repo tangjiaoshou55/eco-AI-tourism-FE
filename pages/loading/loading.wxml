@@ -1,0 +1,17 @@
+<!--pages/loading/loading.wxml-->
+
+<!-- 背景图片 -->
+<image class="loadingImage" src="{{loadingBackground}}" mode="aspectFill"></image>
+
+<view class="loadingText">
+  <text class="waitText" style="white-space: pre-wrap;">
+  专属于您的{{chosenCity}}之旅
+  正在生成中，请稍后...
+  </text>
+
+  <text class="waitVerse" style="white-space: pre-wrap;">
+    {{chosenVerse}}
+    ——{{writer}}
+  </text>
+</view>
+

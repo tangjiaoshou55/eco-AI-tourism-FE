@@ -1,0 +1,102 @@
+<!--pages/collection/collection.wxml-->
+
+<view class="fixed-header">
+  <!-- 头像和用户名称 可跳转个人中心 -->
+  <navigator url="/pages/personalCenter/personalCenter" open-type="switchTab">
+    <view class="info">
+      <image class="infoHead" src="{{avatarUrl}}" mode=""></image>
+      <text class="infoName" space="emsp"> {{userName}}</text>
+    </view>
+  </navigator>
+  <view class="divider"></view>
+
+  <!-- 标题：我的收藏 -->
+  <view class="pageName">我的收藏</view>
+  
+  <!-- Tab 路书 & 景点 -->
+  <view class="tabChanger">
+    <view class="tabs">
+      <text class="{{currentTab == 'route' ? 'tab active' : 'tab'}}" bind:tap="switchTab" data-tab="route">路书</text>
+      <text class="{{currentTab == 'scenery' ? 'tab active' : 'tab'}}" bind:tap="switchTab" data-tab="scenery">景点</text>
+    </view>
+  </view>
+</view>
+
+<!-- 路书内容 -->
+<scroll-view scroll-y="true" class="scroll-content">
+  <view wx:if="{{currentTab == 'route'}}" class="content">
+    <block wx:for="{{planList}}" wx:key="index">
+      <movable-area class="movable-area" wx:if="{{!item.deleted}}">
+        <!-- 删除按钮 -->
+        <button class="delete" bindtap="deleted" data-index="{{index}}" style="width:100%;">
+          <image src="/images/delete.png" class="r-image" mode=""/>
+          <text class="r-text">删除</text>
+        </button>
+
+        <movable-view direction="horizontal" inertia="false" out-of-bounds="true" class="planCard" 
+          bindchange="onChange" 
+          bindtouchstart="onTouchStart"
+          bindtouchmove="onTouchMove"
+          bindtouchend="onTouchEnd" 
+          data-index="{{index}}"
+          data-id="{{item.id}}" 
+          x="{{item.x}}"
+          damping="100"
+          bindtap="fetchAndNavigate">
+          <image class="planImage" src="{{item.cityImage}}"></image>
+          <view class="planInfo">
+            <text class="planTitle">{{item.chosenCity}}{{item.chosenDays}}日游</text>
+            <text class="tag">{{item.chosenTag}}</text>
+            <text class="planDetail" space="ensp">{{item.numPeople}}人出行  {{item.numScenery}}个景点</text>
+            <view class="row">
+              <image src="../../images/calculater.png" mode="" class="calculator"></image>
+              <text class="planDetail">¥{{item.finalFee}}</text>
+            </view>
+          </view>
+        </movable-view>
+      </movable-area>
+    </block>
+  </view>
+
+  <!-- 景区内容 -->
+  <view wx:if="{{currentTab == 'scenery'}}" class="content">
+    <text>这里是景点内容</text>
+    <block wx:for="{{sightList}}" wx:key="index">
+      <movable-area class="movable-area" wx:if="{{!item.deleted}}">
+        <!-- 删除按钮 -->
+        <button class="delete" bindtap="deleted" data-index="{{index}}" style="width:100%;">
+          <image src="/images/delete.png" class="r-image" mode=""/>
+          <text class="r-text">删除</text>
+        </button>
+
+        <movable-view direction="horizontal" inertia="false" out-of-bounds="true" class="planCard" 
+          bindchange="onChange" 
+          bindtouchstart="onTouchStart"
+          bindtouchmove="onTouchMove"
+          bindtouchend="onTouchEnd" 
+          data-index="{{index}}"
+          data-id="{{item.id}}" 
+          x="{{item.x}}"
+          damping="100"
+          bindtap="fetchAndNavigate">
+          <!-- 待修改部分 -->
+          <image class="planImage" src="{{item.cityImage}}"></image>
+          <view class="planInfo">
+            <text class="planTitle">{{item.chosenCity}}{{item.chosenDays}}日游</text>
+            <text class="tag">{{item.chosenTag}}</text>
+            <text class="planDetail" space="ensp">{{item.numPeople}}人出行  {{item.numScenery}}个景点</text>
+            <view class="row">
+              <image src="../../images/calculater.png" mode="" class="calculator"></image>
+              <text class="planDetail">¥{{item.finalFee}}</text>
+            </view>
+          </view>
+        </movable-view>
+      </movable-area>
+    </block>
+  </view>
+</scroll-view>
+
+<!-- 删除提示 -->
+<view class="toast.fade-out2" wx:if="{{showToast}}">
+    删除成功
+  </view>

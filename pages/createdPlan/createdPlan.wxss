@@ -1,0 +1,713 @@
+/* pages/createdPlan/createdPlan.wxss */
+page {
+  height: 100vh;
+}
+/* 遮罩层 */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  z-index: 1000; /* 确保遮罩层在最上层 */
+}
+
+
+.allPages
+{
+  height: 100vh;
+  display: flex;
+}
+
+.backgroundContainer
+{
+  position: relative;
+  height: 100vh;
+  
+}
+.backgroundPictures
+{
+  width: 100%;
+  height: 150px;
+}
+.backgroundPicture1
+{
+  background-color: gray;
+  width: 100%;
+}
+.backgroundPicture2
+{
+  background-color: green;
+  width: 100%;
+}
+
+.backgroundPicture3
+{
+  background-color: red;
+  width: 100%;
+}
+
+/* 文字部分 */
+.textPart
+{
+  position: absolute;
+  display: flex;
+  align-items: flex-end; 
+  top: 160rpx;
+  left: 24rpx;
+}
+.choosenCity
+{
+  font-family: Inter;
+ font-size: 36px;
+ font-weight: 400;
+ line-height: 43.57px;
+ text-align: left;
+ color: #FFFFFF;
+}
+
+.choosenDays
+{
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.2px;
+  text-align: left;
+  color: #FFFFFF;
+}
+/* 上方信息栏 */
+.information
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 260rpx;
+  left: -1px;
+ 
+  background-color: white;
+}
+.tourSetting
+{
+  position: relative;
+}
+/* 上方横线 */
+.bottomLine1 {
+  position: absolute;
+  width: 330px;
+  top: 40rpx;
+  left: 60rpx;
+  
+  border: 1px solid #86E2FF;
+  }
+
+  /* 人数显示部分 */
+  .peopleContainer
+  {
+    position: absolute;
+    top: 29px;
+    left: 47px;
+    display: flex;
+    align-items: center
+  }
+/* 天数显示部分 */
+  .daysContainer
+  {
+    position: absolute;
+    top: 59px;
+    left: 47px;
+    display: flex;
+    align-items: center
+  }
+
+  
+  /* 右侧预算部分 */
+  .costContainer
+  {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    top: 29px;
+    left: 210px;
+    
+  }
+  /* 计算器部分 */
+  .c-title
+  {
+    display: flex;
+    align-items: center
+  }
+  .c-text
+  {
+    padding-top: 10px;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18.15px;
+    text-align: right;
+    color: #35A8E0;
+  }
+   /* 竖直分割线 */
+  .dividLine
+  {
+    position: absolute;
+    width: 0px;
+    height: 50px;
+    top: 30px;
+    left: 200px;
+    border: 1px solid #000000
+  }
+
+/* 上方图片和数量显示 */
+  .picture
+  {
+    width: 20px;
+    height: 20px;
+  }
+  .text
+  {
+    white-space: pre;
+    padding-left: 10px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.52px;
+    text-align: left;
+  }
+
+/* 计算器图标 */
+  .calculater
+  {
+    position: absolute;
+    width: 40px;
+    height: 52px;
+    top: 28px;
+    left: 321px;
+    background: #31CEFF;
+    border-radius: 6px;
+  }
+
+  .c-picture
+  {
+    width: 62rpx;
+    height: 62rpx;
+    padding: 20rpx 7.88rpx 2.62rpx 7.88rpx;
+  }
+  /* 信息栏下框线 */
+  .bottomLine2
+  {
+    position: absolute;
+    width: 330px;
+    top:180rpx;
+    left: 30px;
+    border: 1px solid #86E2FF;
+  }
+/* 天数栏 */
+.eachDay {
+  display: flex; /* 使用flex布局，使得子元素在水平方向上排列 */
+  white-space: nowrap; /* 禁止换行，所有子元素会在同一行显示 */
+  width: 100%; /* 宽度为100%，占满父容器 */
+  height: 104rpx; /* 固定高度 */
+  background-color: white; /* 背景颜色为白色 */
+  transition: all 0.3s; /* 过渡效果，动画时间为0.3秒 */
+}
+
+
+.selectedDay 
+{
+  margin-top: 2rpx; /* 顶部外边距 */
+  margin-left: 10px; /* 左侧外边距 */
+  display: inline-block; /* 设为 inline-block 使其具有块级元素和内联元素的特性 */
+  overflow: hidden; /* 隐藏溢出的内容 */
+  height: 90rpx; /* 固定高度 */
+  border-radius: 20rpx; /* 边框圆角 */
+  font-family: Inter; /* 字体 */
+  font-size: 14px; /* 字体大小 */
+  font-weight: 600; /* 字体粗细 */
+  color: #31CEFF; /* 字体颜色 */
+  line-height: 45px; /* 行高 */
+  border: 1px solid #31CEFF; /* 边框样式 */
+  padding-left: 10rpx; /* 内边距，左侧 */
+  padding-right: 10rpx; /* 内边距，右侧 */
+  text-align: center; /* 文本居中对齐 */
+  box-sizing: border-box; /* 包含内边距和边框在内 */
+}
+
+
+.active
+{
+  background-color: #31CEFF;
+  color: white;
+}
+
+.adviseContainer
+{
+  position: absolute;
+  left: 32rpx;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  
+}
+/* 建议时长 */
+.timeAdvise
+{
+  
+  display: flex;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18.15px;
+  text-align: left;
+  color: #35A8E0;
+}
+/* 路线概览 */
+.pathAdvise
+{
+  display: flex;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18.15px;
+  text-align: left;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+/* 具体路线 */
+.adviseText
+{
+  display: flex;
+  font-family: Inter;
+  font-size: 26rpx;
+  font-weight: 400;
+  line-height: 15.73px;
+  text-align: left;
+}
+
+/* 景点具体内容 */
+.sightContent
+{
+  position: absolute;
+  width: 95%;
+  bottom: 200rpx;
+  left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: white;
+  transition: all 0.3s;
+
+}
+/* 可移动父区 */
+.movable-area {
+  padding-left: 10rpx;
+  width: 470rpx;                  /* 1. 设置宽度为100% */
+  height: 200rpx;               /* 2. 设置高度 */
+  position: relative;         /* 3. 相对定位，确保子元素可以绝对定位 */
+}
+
+
+.replaceContainer {
+  position:relative;
+ 
+ padding-left: 15rpx;
+  border-radius: 30rpx;
+  height: 100%;
+  width: 660rpx;
+  transition: all 0.001s;
+}
+
+.replace {
+  height: 100%;
+  width: 100%;
+  background: #39BAF9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0rpx 30rpx 30rpx 0rpx;
+  
+}
+
+.delete {
+  position: absolute;
+  top: px;
+  left: 190rpx;
+  height: 100%;
+  background: #FC3838;
+  border-radius: 0rpx 30rpx 30rpx 0rpx;
+  transition: all 0.3s;
+}
+
+.r-image
+{
+  position: absolute;
+  width: 44rpx;
+  height: 47rpx;
+  top: 50rpx;
+  right: 25rpx;
+}
+.r-text
+{
+  position: absolute;
+  top: 120rpx;
+  right: 25rpx;
+  color: white;
+  display: flex;
+  height: 15px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.52px;
+  text-align: center;
+}
+
+
+
+/* 景点部分 */
+.sight
+{
+
+  width: 670rpx;
+  height: 200rpx;
+  margin-left: 0;
+ 
+  display: flex;
+  border-radius: 20rpx;
+  border: 1rpx solid lightgray;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  background-color: white;
+  transition: all 0.1s;
+  
+}
+
+
+
+
+/* 景点图片 */
+.s-picture
+{
+  width: 250rpx;
+  height: 140rpx;
+  position: absolute;
+  border-radius: 20rpx;
+  top: 30rpx;
+  left: 30rpx;
+  background: black;
+}
+/* 景点标题 */
+.s-title
+{
+  position: absolute;
+  top:30rpx;
+  left:300rpx;
+  display: flex;
+}
+
+.s-name
+{
+  font-family: Inter;
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 29rpx;
+  text-align: left;
+}
+
+.s-describe
+{
+  margin-left: 4rpx;
+  background: #86E2FF;
+  color: #4B4B4B;
+  font-family: Inter;
+  font-size: 20rpx;
+  font-weight: 400;
+  line-height: 18rpx;
+  text-align: left;
+  align-items: center;
+  padding: 8rpx;
+  border-radius: 6rpx;
+}
+
+/* 景区评分 */
+.s-score
+{
+  position: absolute;
+  top:60rpx;
+  left:300rpx;
+  display: flex;
+}
+/* 星星图片*/
+.star
+{
+  width: 22rpx;
+  height: 22rpx;
+  padding-right:2rpx;
+ border-radius:4rpx;
+}
+/* 评分 */
+.score-text
+{
+  font-family: Inter;
+  font-size:20rpx;
+  font-weight: 700;
+  line-height: 19rpx;
+  text-align: left;
+  color: #FFBA08;
+}
+/*  开放时间*/
+.openTime
+{
+  position: absolute;
+  top:90rpx;
+  left:300rpx;
+  font-family: Inter;
+  font-size: 20rpx;
+  font-weight: 400;
+  line-height: 20rpx;
+  text-align: left;
+  color: gray;
+}
+/* 门票价格 */
+.price
+{
+  position: absolute;
+  top:110rpx;
+  left:300rpx;
+  font-family: Inter;
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 29rpx;
+  text-align: left;
+  color: #39BAF9;
+
+}
+
+/* 地址 */
+.address
+{
+  position: absolute;
+  width: 238rpx;
+  top: 140rpx;
+  left: 300rpx;
+  font-family: Inter;
+  font-size: 20rpx;
+  font-weight: 700;
+  line-height: 20rpx;
+  text-align: left;
+  color: gray;
+
+}
+
+
+
+
+/* 过度内容 */
+.intr
+{
+  position: relative;
+  width: 540rpx;
+  margin-left: 50rpx;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+  display: flex;
+  align-items: center;
+  color: #727272;
+  font-family: Inter;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 40rpx;
+  padding-left: 40rpx;
+  padding-top: 60rpx;
+  padding-bottom: 60rpx;
+  border-left: 4rpx solid #000000; /* 只显示左侧边框 */
+  border-top: none;    /* 上边框不显示 */
+  border-right: none;  /* 右边框不显示 */
+  border-bottom: none; 
+}
+/* 上下两个三角形绘制 */
+.intr::before, .intr::after {
+  content: '';
+  position: absolute;
+  left: -10rpx; /* 三角形的底部与垂直线中心对齐 */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10rpx 10rpx 0 10rpx; /* 控制三角形大小 */
+  border-color: #000000 transparent transparent transparent; /* 上箭头颜色设置 */
+}
+
+.intr::before {
+  top: 0; /* 顶部三角形 */
+  transform: translateY(-100%); /* 向上偏移，使底部对齐线条顶端 */
+}
+
+.intr::after {
+  bottom: 0; /* 底部三角形 */
+  transform: translateY(100%); /* 向下偏移，使顶部对齐线条底端 */
+  border-width: 0 10rpx 10rpx 10rpx; /* 调整边框以形成向下的三角形 */
+  border-color: transparent transparent #000000 transparent; /* 下箭头颜色设置 */
+}
+
+.tourEnd
+{
+  padding-top: 30rpx;
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #616161;
+}
+
+/* 更换加载页面 */
+.replaceingContainer
+{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500rpx;
+  width: 670rpx;
+
+ 
+}
+/* 更换加载页面的图标 */
+.recyle
+{
+  width: 63rpx;
+  height: 63rpx;  
+}
+
+.replace-text
+{
+  font-family: Inter;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 40rpx;
+  text-align: left;
+  color: #39BAF9;
+}
+
+
+/* 删除后的弹窗 */
+.toast {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 30rpx 90rpx;
+  border-radius: 10rpx;
+  font-size: 40rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  z-index: 1000;  /* 确保提示框在最上层 */
+}
+
+/* 收藏按钮 */
+.collect
+{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  bottom:80rpx;
+  left: 480rpx;
+  background: #D9D9D9;
+
+ font-family: Inter;
+ font-size: 30rpx;
+ font-weight: 700;
+line-height: 48rpx;
+text-align: center;
+}
+
+.create
+{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  bottom:80rpx;
+  left: 100rpx;
+  background: #D9D9D9;
+
+ font-family: Inter;
+ font-size: 30rpx;
+ font-weight: 700;
+line-height: 48rpx;
+text-align: center;
+}
+/* 提示页面 */
+.mention
+{
+  position: fixed;
+  top: 45%;
+  left: 10%;
+  display: flex;
+  flex-direction: column;
+  width: 600rpx;
+  height: 358rpx;
+  border-radius: 30rpx;
+  background-color: white;
+}
+/* 提示页面的text */
+.m-text
+{
+  height: 74%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: Inter;
+  padding: 30rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 44rpx;
+  text-align: center;   
+}
+/* 提示页面的按钮部分 */
+.buttonContainer
+{
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 26%;
+  border-top: 1rpx solid black;
+  border-radius:0  0 30rpx  30rpx ;
+}
+
+.recollect
+{
+  border-radius: 0;
+  border-left:1rpx solid black;
+}
+
+/* 选择原因的界面 */
+.reasonConatiner
+{
+  position: fixed;
+  top: 45%;
+  left: 16%;
+  display: flex;
+  flex-direction: column;
+  width: 500rpx;
+  height: 600rpx;
+  border-radius: 30rpx;
+  background-color: white;
+}
+/* 原因按钮 */
+.reasons
+{
+  background: #D9D9D9;
+  font-family: Inter;
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 44rpx;
+  text-align: center;
+  margin-top: 24rpx;
+}

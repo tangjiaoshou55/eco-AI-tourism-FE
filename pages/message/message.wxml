@@ -1,0 +1,7 @@
+<!--pages/message/message.wxml-->
+<view class="fixed-header">
+  <!-- 标题：消息中心 -->
+  <view class="message">消息中心</view>
+
+  <view class="divider"></view>
+</view>

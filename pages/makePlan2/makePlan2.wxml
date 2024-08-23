@@ -1,0 +1,34 @@
+<!--pages/makePlan/makePlan.wxml-->
+<!--头像部分用户名部分-->
+<view class="userInfo">
+  <image class ="userHead" bindtap ="validated" src="{{avatarUrl}}"/>
+  <view class ="userName">{{userName}}</view>
+</view>
+<!-- 分割线 -->
+<view class="bottomLine"></view>
+<!-- 地区名字部分 -->
+<view class="cities">
+  <view class="cityName">{{city}}</view>
+  <view class="tagName">{{tag}}</view>
+</view>
+
+
+<!-- 标题 -->
+  <text class="tourTitle">请点击选择您的旅行风格</text>
+   <!-- 风格选择部分 -->
+   <scroll-view class="container"scroll-y="true">
+    <view class="tourStyle">
+    <button wx:for="{{styles}}" wx:key="index" class="selectedstyle {{item.selected ? 'active' : ''}}" bindtap="choosen" data-index="{{index}}" style="width: 45%">{{item.name}}</button>
+   </view>
+   </scroll-view>
+
+   
+<view class="button-container" wx:if="{{hasInput}}">
+    <view class="circle-button" bindtap="onButtonClickForSearch">
+      <image class="arrow-icon-left" src="/images/arrow.png" />
+    </view>
+  </view>
+  
+  <!-- 底部tabBar栏位 -->
+<custom-tab-bar active="{{tabIndex}}"></custom-tab-bar>
+

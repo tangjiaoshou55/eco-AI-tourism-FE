@@ -1,0 +1,13 @@
+<!--pages/personalCenter/personalCenter.wxml-->
+<view class="fixed-header">
+  <!-- 标题：个人中心 -->
+  <view class="message">个人中心</view>
+
+  <view class="divider"></view>
+
+  <view class="info">
+    <image class="infoHead" src="../../images/head.png" mode=""></image>
+    <text class="infoName" space="emsp">{{userName}}</text>
+  </view>
+
+</view>

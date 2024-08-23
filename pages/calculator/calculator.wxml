@@ -1,0 +1,148 @@
+<!-- 标题 -->
+<view class="fixedInfo">
+  <text class="title">预算计算器\n</text>
+  <text class="tripInfo">{{chosenCity}}{{chosenDays}}日游</text>
+</view>
+
+<!-- 景区门票 -->
+<view class="admissionFee">
+  <image class="sceneryImage" src="../../images/calculator/tree.png" mode=""></image>
+  <text class="sceneryTitle">景区门票</text>
+  <text class="sceneryFee">{{sceneryAdmissionFee}}</text>
+</view>
+
+
+<view class="section">
+  <view class="section-header">
+    <image src="../../images/calculator/bus.png" class="sceneryImage"></image>
+    <text class="sceneryTitle">交通</text>
+    <image src="../../images/calculator/arrow.png" mode ="" class="{{toggleClass}}" bindtap="toggleSection" data-section="transport"></image>
+  </view>
+  <view wx:if="{{sections.transport}}" class="section-content">
+    <!-- 复杂界面内容 -->
+    <view class="columView">
+      <!-- 第一行信息 -->
+      <view class="rowInfo">
+        <text class='transportInfo'>往返</text>
+        <!-- 弹窗：选择城市 -->
+        <text class="info-box" bindtap="goChooseCity">{{selectedCity}}</text>
+
+        <!-- 弹窗：选择交通方式 -->
+        <image src="/images/calculator/doubleArrows.png" mode="" class="trasMethod"></image>
+
+        <image src="{{selectedTransport}}" class="info-box-2" bindtap="showTransportSelector"></image>
+        <view class="selector" wx:if="{{showTransportSelectorFlag}}" catchtap="hideTransportSelector">
+          <view class="selector-content" catchtap="preventHide">
+            <text class="selectTitle">选择往返交通工具</text>
+            <view class="option" bindtap="selectTransport" data-option="飞机">飞机</view>
+            <view class="option" bindtap="selectTransport" data-option="高铁">高铁</view>
+            <view class="option" bindtap="selectTransport" data-option="驾车">驾车</view>
+          </view>
+        </view>
+
+        <!-- 目的地 -->
+        <image src="../../images/calculator/location.png" mode="" class="location"></image>
+
+          <text class="transportInfo">{{chosenCity}}</text>
+      </view>
+        
+      <!-- 第二行信息 -->
+      <view class="rowInfo">
+        <text class="transportFee">{{transportFee}}</text>
+      </view>
+
+      <!-- 第三行信息 -->
+      <view class="rowInfo">
+        <text class='transportInfo'>市内交通</text>
+
+        <!-- 弹窗：市内交通 -->
+        <view class="info-box" bindtap="showCityTransportSelector">{{selectedCityTransport}}</view>
+          <view class="selector" wx:if="{{showCityTransportSelectorFlag}}" catchtap="hideCityTransportSelector">
+            <view class="selector-content" catchtap="preventHide">
+              <text class="selectTitle">选择市内交通工具</text>
+              <view class="option" bindtap="selectCityTransport" data-option="公共交通">公共交通</view>
+              <view class="option" bindtap="selectCityTransport" data-option="驾车">驾车</view>
+            </view>
+          </view>
+
+          <text class="transportFeeInCity">{{transportFeeInCity}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="section-content">
+    <!-- 简洁界面内容 -->
+    <view class="columView">
+        
+      <!-- 第一行信息 -->
+      <view class="rowInfo">
+        <text class='transportInfo'>往返</text>
+        <text class="transportFee-2">{{transportFee}}</text>
+      </view>
+
+      <!-- 第二行信息 -->
+      <view class="rowInfo">
+        <text class='transportInfo'>市内交通</text>
+        <text class="transportFeeInCity-2">{{transportFeeInCity}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-header">
+    <image class="sceneryImage" src="../../images/calculator/restaurant.png" mode=""></image>
+    <text class="sceneryTitle">餐饮</text>
+  </view>
+
+  <view class="oneRow">
+    <text class='oneRow'>用餐档次</text>
+    <view class="info-box" bindtap="showFoodSelector">{{selectedFood}}</view>
+    <view class="selector" wx:if="{{showFoodSelectorFlag}}" catchtap="hideFoodSelector">
+      <view class="selector-content" catchtap="preventHide">
+        <text class="selectTitle">选择用餐档次</text>
+        <view class="option" bindtap="selectFood" data-option="高档餐厅">高档餐厅</view>
+        <view class="option" bindtap="selectFood" data-option="中档餐厅">中档餐厅</view>
+        <view class="option" bindtap="selectFood" data-option="快餐小吃">快餐小吃</view>
+      </view>
+    </view>
+
+    <text class="oneRowFee">{{foodFee}}</text>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-header">
+    <image class="sceneryImage" src="../../images/calculator/building.png" mode=""></image>
+    <text class="sceneryTitle">住宿</text>
+  </view>
+
+  <view class="oneRow">
+    <text class='oneRow'>住宿类型</text>
+    <view class="info-box" bindtap="showHotelSelector">{{selectedHotel}}</view>
+    <view class="selector" wx:if="{{showHotelSelectorFlag}}" catchtap="hideHotelSelector">
+      <view class="selector-content" catchtap="preventHide">
+        <text class="selectTitle">选择住宿类型</text>
+        <view class="option" bindtap="selectHotel" data-option="豪华型">豪华型</view>
+        <view class="option" bindtap="selectHotel" data-option="舒适型">舒适型</view>
+        <view class="option" bindtap="selectHotel" data-option="经济型">经济型</view>
+      </view>
+    </view>
+    <text class="oneRowFee">{{hotelFee}}</text>
+  </view>
+</view>
+
+<view class="finalInfoColumn">
+  <view class="finalInfoRow">
+    <text class="finalInfo">总预算约</text>
+    <text class="finalFee">{{finalFee}}</text>
+  </view>
+
+  <text bindtap="onTap" class="save-button">保存至攻略</text>
+  
+  <!-- 提示框 -->
+  <view wx:if="{{showToast}}" class="toast.fade-out-2">
+    {{toastMessage}}
+  </view>
+
+  <text class="statement">声明：该预算根据网络信息整合估计，且不包含购物，保险等其他可能产生的费用。</text>
+</view>

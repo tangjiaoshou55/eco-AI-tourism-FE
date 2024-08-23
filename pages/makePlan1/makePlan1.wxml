@@ -1,0 +1,32 @@
+<!--pages/makePlan/makePlan.wxml-->
+<!--头像部分用户名部分-->
+<view class="userInfo">
+  <image class ="userHead" bindtap ="validated" src="{{avatarUrl}}"/>
+  <view class ="userName">{{userName}}</view>
+</view>
+<!-- 分割线 -->
+<view class="bottomLine"></view>
+<!-- 地区名字部分 -->
+<view class="cities">
+  <view class="cityName">{{city}}</view>
+  <view class="tagName">{{tag}}</view>
+</view>
+<!-- 信息框 -->
+<view class="inputContainer" >
+  
+    <view class="peopleLable">出行人数</view>
+    <input class="inputPeople" type="number" placeholder="{{numberOftours}}" bindfocus="startInput1" bindblur="finishedInput1" /> 
+
+    <view class="daysLabel">出行天数</view>
+    <input class="inputDays" type="number" placeholder="{{numberOfDays}}" bindfocus="startInput2" bindblur="finishedInput2" /> 
+</view>
+
+<view class="button-container" wx:if="{{hasInput}}">
+    <view class="circle-button" bindtap="onButtonClickForSearch">
+      <image class="arrow-icon-left" src="/images/arrow.png" />
+    </view>
+  </view>
+
+  <!-- 底部tabBar栏位 -->
+<custom-tab-bar active="{{tabIndex}}"></custom-tab-bar>
+

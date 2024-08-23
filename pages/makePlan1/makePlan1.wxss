@@ -1,0 +1,165 @@
+/* pages/makePlan/makePlan.wxss */
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.userInfo
+{
+  position: absolute;
+top: 24px;
+left: 18px;
+display: flex;
+align-items: center; 
+
+
+}
+.userHead
+{
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  background: #CDCDCD;
+  border: 2px solid #86E2FF;
+  margin-right: 10px; 
+}
+.userName
+{
+ font-family: Inter;
+ font-size: 14px;
+ font-weight: 400;
+ line-height: 19.36px;
+ text-align: left;
+}
+
+.bottomLine {
+position: absolute;
+width: 100%;
+height: 0px;
+top: 78px;
+left: 0px;
+border: 1px solid #86E2FF;
+}
+
+/* 标题 */
+.cities
+{
+  width: 246.19px;
+  height: 58.79px;
+  top: 108px;
+  left: 23px;
+  position: absolute;
+  display: flex;
+  align-items: flex-end; 
+
+}
+
+.cityName
+{
+  font-family: Inter;
+  font-size: 45.93px;
+  font-weight: 400;
+  line-height: 55.59px;
+  text-align: left;
+}
+.tagName
+{
+  position: relative;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: left;
+  color: #31CEFF;
+}
+
+/* 出行输入框架 */
+.inputContainer
+{
+  width: 348px;
+  height: 177px;
+  top: 197px;
+  left: 23px;
+  position: absolute;
+  border: 1.5px solid #86E2FF;
+ border-radius: 20rpx;
+
+}
+/* 出行人数标签 */
+.peopleLable
+{
+  position: absolute;
+  width: 123.09px;
+  height: 32.15px;
+  top: 35px;
+  left: 38px;
+  font-family: Inter;
+ font-size: 24px;
+ font-weight: 400;
+ line-height: 29.05px;
+ text-align: left;
+
+
+}
+/* 出行人数输入 */
+.inputPeople
+{
+  width: 150.09px;
+  height: 40.83px;
+  top: 30px;
+  left: 170px;
+  position: absolute;
+  border-radius: 9.19px ;
+  opacity: 0px;
+  background: #ECECEC;
+  text-align: center;
+}
+
+/* 出行天数标签 */
+.daysLabel
+{
+  position: absolute;
+  width: 123.09px;
+  height: 32.15px;
+  top: 110px;
+  left: 38px;
+  font-family: Inter;
+ font-size: 24px;
+ font-weight: 400;
+ line-height: 29.05px;
+ text-align: left;
+}
+/* 出行天数输入 */
+.inputDays
+{
+  width: 150.09px;
+  height: 40.83px;
+  top: 105px;
+  left: 170px;
+  position: absolute;
+  border-radius: 9.19px ;
+  opacity: 0px;
+  background: #ECECEC;
+  text-align: center;
+}
+
+.button-container
+{
+  position: absolute; 
+  top: 610px;
+  left: 332px;
+}
+
+.circle-button {
+  width: 90rpx;
+  height: 90rpx;
+  background-color:#31CEFF;/* 圆形按钮的背景颜色 */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-icon-left {
+  width: 40rpx; /* 根据需要调整箭头图标大小 */
+  height: 40rpx;
+}

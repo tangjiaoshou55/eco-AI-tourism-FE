@@ -1,0 +1,51 @@
+/* pages/personalCenter/personalCenter.wxss */
+
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding:20rpx;
+  box-sizing: border-box;
+}
+.fixed-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.message {
+  padding: 20rpx 16rpx;
+  border-radius: 10rpx;
+  color: black;
+  font-size: 50rpx;
+  text-align: center;
+}
+
+.divider {
+  height: 1rpx;
+  background-color: #9CE0FB;
+  margin-bottom: 10rpx;
+}
+
+.info {
+  display: flex;
+  padding: 20rpx 16rpx;
+  border-radius: 10rpx;
+  color: #9CE0FB;
+  flex-direction: column;
+}
+
+.infoHead {
+  width: 250rpx;
+  height: 250rpx;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoName {
+  padding-top: 20rpx;
+  margin-top: auto;
+  font-size: 40rpx;
+  text-align: center;
+}

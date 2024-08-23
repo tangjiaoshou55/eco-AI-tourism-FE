@@ -1,0 +1,46 @@
+<!--pages/sight/sight.wxml-->
+<scroll-view class="allPages" scroll-y="true" bindscroll="scrolling">
+  <view class="backgroundContainer">
+    <swiper class="backgroundPictures"  autoplay="true" interval="3000" circular="true">
+      <swiper-item>
+        <image class="backgroundPicture1" src=""></image>
+      </swiper-item>
+      <swiper-item>
+        <image class="backgroundPicture2" src=""></image>
+      </swiper-item>
+      <swiper-item>
+        <image class="backgroundPicture3" src=""></image>
+      </swiper-item>
+      <!-- 可以继续添加更多的图片 -->
+    </swiper>
+  </view>
+
+
+  <view class="infoColumn">
+    <text class="sightTitle">{{chosenCity}} - {{chosenSight}}</text>
+    <text class="sightAddr">{{sightAddr}}</text>
+    <text class="sightDesc">{{sightDesc}}</text>
+    <view class="scoreRow">
+      <image class="star" src="/images/star.png" />
+      <view class="scoreText">{{sightScore}} · </view>
+      <view class="rateText">推荐指数：{{sightRate}}</view>
+    </view>
+  </view>
+
+  <view class="sightPrice">
+    <view class='priceRow'>
+      <text class="priceTitle">门票价格</text>
+      <text class="openTime">开放时间 {{openTime}}</text>
+    </view>
+
+    <view wx:for="{{price}}" wx:key="unique" class="priceRow">
+      <text class="FeeTitle">{{item.title}}</text>
+      <text class="Fee">¥{{item.price}}</text>
+    </view>
+  </view>
+
+  <view wx:for="{{tourInfo}}" wx:key="unique" class="tourInfo">
+    <text class="tourTitle">{{item.title}}</text>
+    <text class="tourDesc">{{item.content}}</text>
+  </view>
+</scroll-view>

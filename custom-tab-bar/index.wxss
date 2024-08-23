@@ -1,0 +1,30 @@
+
+.selfbar {
+  position: fixed;
+  top:1350rpx;
+  height:150rpx;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around; /* 水平方向均匀分布 */
+ border-radius: 20rpx;
+  background-color: #ffffff;
+
+}
+.tab-bar-item {
+  font-family: Inter;
+  font-size: 16.53px;
+  font-weight: 400;
+  line-height: 20.01px;
+  text-align: left;
+  color: #000000;
+}
+
+.tab-bar-item.selected {
+  font-family: Inter;
+  font-size: 16.53px;
+  font-weight: 400;
+  line-height: 20.01px;
+  text-align: left;
+  color: #31CEFF;
+}
